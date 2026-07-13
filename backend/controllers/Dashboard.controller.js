@@ -58,6 +58,7 @@ const Userdelete=async(req,res)=>{
         }
 
         const DeleteUser = await UserModel.findByIdAndDelete(userId);
+        const deletecomment = await CommentModel.deleteMany({userId: userId})
         return res.status(200).json({success:true, message:"User Deleted Successfully"})
     } catch (error) {
         return res.status(500).json({success:false, message:"Internal server error", error:error.message})

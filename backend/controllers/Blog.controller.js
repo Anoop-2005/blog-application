@@ -62,7 +62,7 @@ const deletePost = async(req, res)=>{
 } */
 
         const deletePost = await Blogmodel.findByIdAndDelete(postId)
-        const deleComment = await CommentModel.findByIdAndDelete(postId)
+        const deleComment = await CommentModel.deleteMany({postId: postId})
         res.status(200).json({success:true, message:"Post Deleted Successfully"})
         
     } catch (error) {
