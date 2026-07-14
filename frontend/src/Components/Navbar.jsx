@@ -30,7 +30,7 @@ export default function Navbar() {
     <>
      <nav className="navbar d-flex justify-content-between  align-items-center p-3">
         <Link to={'/'} className='text-reset text-decoration-none'> 
-         <h1 className='mx-1 text-black fs-2 fw-bold'>Fullstack is Fun?</h1>
+         <h1 className='mx-1 text-black fs-2 fw-bold'>Enjoying Computer Science?</h1>
         </Link>
         <div className='d-flex align-items-center'>
             {!user ? <Link to={'/login'}><button className='btn_sign mx-3'>Sign in</button></Link> : (

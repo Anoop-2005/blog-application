@@ -87,7 +87,9 @@ export default function Blog() {
             src={singlePost && `${BaseUrl}/images/${singlePost.image}`} 
             alt="Exploring the Art of Writing" 
             className="img-fluid mb-4" 
-            style={{ borderRadius: "10px", maxHeight: "500px", objectFit: "cover", width: "100%" }}
+            style={{ borderRadius: "10px", maxHeight: "500px", objectFit: "conatin", width: "100%", height:"auto",backgroundColor: "#1a1a1a",
+              margin: "0 auto", display: "block", maxWidth: "500px"
+             }}
           />
           
           <p className="mb-5">{singlePost && singlePost.desc}</p>
