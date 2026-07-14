@@ -17,7 +17,7 @@ export default function ChatbotWidget({ postId, mode = "floating" }) {
         { role: "assistant", text: res.data.answer, suggestion: res.data.suggested_blog },
       ]);
     } catch (err) {
-      setMessages((p) => [...p, { role: "assistant", text: err.reponse?.data?.message || err.message }]);
+      setMessages((p) => [...p, { role: "assistant", text: err.response?.data?.message || err.message }]);
     } finally {
       setLoading(false);
     }
