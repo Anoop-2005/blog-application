@@ -65,9 +65,6 @@ export default function AllPosts() {
       {posts && posts.map((post)=> (
         <div className='col-md-4 mb-4 col-lg-4 col-12' key={post._id}>
         <div className='card h-100'>
-          <img src={`${BaseUrl}/images/${post.image}`}
-          className='card-img-top'
-           alt={post.title} />
           <div className='card-body'>
             <h5 className='card-title'>{post.title}</h5>
             <p className='card-text'>{post.desc}</p>

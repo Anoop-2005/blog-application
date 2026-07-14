@@ -22,7 +22,7 @@ const corsoption={
 
 //mongodb connnection
 //DBCon()
-app.use(express.static('public'))
+
 app.use(cors(corsoption))
 app.use(cookieParser());
 app.use(express.json());

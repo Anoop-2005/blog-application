@@ -46,9 +46,6 @@ export default function RecentPost() {
                 return (
                     <div key ={post._id} className='col-md-4 col-lg-4 col-xs-12 mb-4'>
                 <div className='card border-success' style={{borderWidth:"2px", backgroundColor:"#2b2b2b", borderRadius:"10px", overflow:"hidden"}}>
-                    <img src={`${BaseUrl}/images/${post.image}`} 
-                    className='card-img-top img-fluid' alt=""
-                    style={{ height: "200px",objectFit: "cover", width: "100%" }}/>
                     <div className='card-body bg-dark text-white'>
                         <h5 className='card-title'>{post.title}</h5>
                         <p className='card-text'>{truncateText(post.desc, 30)}</p>

@@ -83,14 +83,7 @@ export default function Blog() {
       <div className="row">
         <div className="col-md-12">
           <h1 className="fw-bold text-black mb-4 display-4">{singlePost && singlePost.title}</h1>
-          <img 
-            src={singlePost && `${BaseUrl}/images/${singlePost.image}`} 
-            alt="Exploring the Art of Writing" 
-            className="img-fluid mb-4" 
-            style={{ borderRadius: "10px", maxHeight: "500px", objectFit: "conatin", width: "100%", height:"auto",backgroundColor: "#1a1a1a",
-              margin: "0 auto", display: "block", maxWidth: "500px"
-             }}
-          />
+          
           
           <p className="mb-5">{singlePost && singlePost.desc}</p>
           {singlePost && (

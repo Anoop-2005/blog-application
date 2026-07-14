@@ -10,17 +10,8 @@ export default function Register() {
     name:'',
     email:'',
     password:'',
-    image:null,
   });
 
-  const handleImageChange=(e)=>{
-    const file = e.target.files[0];
-    setValue({...value, image:file});
-  };
-
-  const handleImageclick=()=>{
-    document.getElementById('image').click();
-  };
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
@@ -29,7 +20,6 @@ export default function Register() {
     formData.append('name', value.name);
     formData.append('email', value.email);
     formData.append('password', value.password);
-    formData.append('profile', value.image); 
 
     try {
       const response=await post('auth/register', formData,{ 
@@ -68,28 +58,6 @@ export default function Register() {
         <div className='card-body p-4'>
           <h1 className='h5 mb-4 fw-bold text-dark'>Sign in to your Account</h1>
           <form onSubmit={handleSubmit}>
-            <div className='text-center'>
-              <label htmlFor='image' className='form-label'>Profile Picture</label>
-              <div className='d-flex justify-content-center'>
-                <img 
-                src={value.image ? URL.createObjectURL(value.image) : "https://placehold.net/avatar.svg"}
-                alt='avtar'
-                className='rounded-circle'
-                width='100'
-                height="100"
-                style={{cursor: 'pointer'}}
-                onClick={handleImageclick}
-                />
-              </div>
-              <input 
-              type="file"
-              className='form-control d-none' //hide file input
-              id='image'
-              accept='image/*'
-              onChange={handleImageChange}
-              />
-              </div>
-
             <div className='mb-3'>
               <label htmlFor='fullname' className='form-label'>Full Name</label>
               <input 

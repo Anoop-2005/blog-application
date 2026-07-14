@@ -1,6 +1,4 @@
 import Blogmodel from "../models/blog.model.js";
-import fs from 'fs';
-import path from 'path';
 import { indexBlog } from "../services/Chat.service.js";
 import CommentModel from "../models/comments.model.js";
 
@@ -19,7 +17,7 @@ const Create=async(req, res)=>{
         const CreateBlog = new Blogmodel({
             title,
             desc,
-            image: imagePath
+          
         })
         await CreateBlog.save() //both can happedn in just by model.create
         indexBlog(CreateBlog);
@@ -43,23 +41,6 @@ const deletePost = async(req, res)=>{
             return res.status(404).json({success:false, message:'Blog not found'})
         }
 
-        if(post.image){
-            const profilePath=path.join('public/images', post.image);
-            fs.promises.unlink(profilePath)
-            .then(()=> console.log('Profile image deleted'))
-            .catch(err => console.error('Error deleting Profile image:', err));
-        }
-
-        /*if (post.image) {
-    const profilePath = path.join('public/images', post.image);
-    try {
-        // Using await keeps the code reading top-to-bottom
-        await fs.promises.unlink(profilePath);
-        console.log('Profile image deleted');
-    } catch (err) {
-        console.error('Error deleting Profile image:', err);
-    }
-} */
 
         const deletePost = await Blogmodel.findByIdAndDelete(postId)
         const deleComment = await CommentModel.deleteMany({postId: postId})

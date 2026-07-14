@@ -10,7 +10,6 @@ export default function Profile() {
   const {userId } =useParams();
   const dispatch =useDispatch()
 
-  const [profileImage, setProfileImage]=useState(null);
   const [name, setName]=useState('');
   const [oldPassword, setOldPassword]=useState('');
   const [newPassword, setNewPassword]=useState('')
@@ -21,9 +20,6 @@ export default function Profile() {
       setName(user.name)
     }
   },[])
-  const handleImageChange=(e)=> {
-    setProfileImage(e.target.files[0]);
-  }
 
   const handleUpdateProfile=async(e)=>{
     e.preventDefault();
@@ -32,9 +28,6 @@ export default function Profile() {
     formData.append('name',name)
     formData.append('oldpassword',oldPassword)
     formData.append('newpassword', newPassword)
-    if (profileImage) {
-      formData.append('profile', profileImage)
-    }
     
     try {
       const response = await patch(`auth/profile/${userId}`,formData)
@@ -59,27 +52,6 @@ export default function Profile() {
     <div className='profile-container'>
       <h1 className='profile-title'>Update Profile</h1>
       <form className='profile-form' onSubmit={handleUpdateProfile}>
-        <div className='profile-image-section'>
-          <label htmlFor='profileImage' className="profile-image-label">
-            {profileImage ? (
-              <img src={URL.createObjectURL(profileImage)} alt='Avatar' className='profile-image'/>
-            ): (
-              <div className='profile-placeholder'>
-                <img src={`${BaseUrl}/images/${user.profile}`} alt='avatar' className='profile-image'/>
-              </div>
-            )}
-
-            <FaCamera className='profile-camera-icon'/>
-          </label>
-          <input
-          type='file'
-          id='profileImage'
-          accept='image/*'
-          onChange={handleImageChange}
-          className='profile-image-input'
-          />
-        </div>
-
         <div className='input-group'>
           <FaUser className='input-icon'/>
           <input

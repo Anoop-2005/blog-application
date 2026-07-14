@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function AddPost() {
   const [title, setTitle]=useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState(null);
+  
   console.log('image', image)
 
   const navigate= useNavigate();
@@ -15,9 +15,7 @@ export default function AddPost() {
     e.preventDefault();
     try {
       const formData = new FormData();
-      if (image) {
-        formData.append('postimg', image);
-      }
+      
       formData.append('title', title);
       formData.append('desc', description);
 
@@ -30,7 +28,6 @@ export default function AddPost() {
       if (data.success) {
         toast.success(data.message)
         setTitle('')
-        setImage(null)
         setDescription('')
         navigate('/dashboard/allposts');
       }
@@ -54,16 +51,7 @@ export default function AddPost() {
             </div>
             <div className='card-body p-4'>
               <div method='post' encType='multipart/form-data'>
-              <div className='mb-4'>
-                <label htmlFor="postImage" className='form-label'>Upload Image</label>
-                <input type='file'
-                className='form-control'
-                id="image"
-                onChange={(e)=> setImage(e.target.files[0])}
-                />
-
-
-              </div>
+              
               <div className='mb-4'>
                 <label htmlFor='postTitle' className='form-label'>Title</label>
                 <input

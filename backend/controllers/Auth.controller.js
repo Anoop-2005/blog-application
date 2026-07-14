@@ -16,17 +16,10 @@ const Register= async(req, res) => {
         if (existUser) {
             return res.status(400).json({success: false, message: "USer already exits please Login"})
         }
-
-        let imagePath="";
-        if (req.file) {
-            imagePath = req.file.filename;
-
-        }
-        
         //const hashpassword = await bcrypt.hashsync(password, 10) then save it new user instead of password-> hashpassword 
         //creating new user 
         const NewUser = await UserModel.create({
-            name, email: email.toLowerCase(), password, profile:imagePath
+            name, email: email.toLowerCase(), password
         });
         //await NewUser.save() - redundant use with new user model
         return res.status(200).json({success:true, message:'User Register Successfully', user: NewUser});
@@ -121,11 +114,6 @@ const updateProfile=async(req, res) => {
         }else if (oldpassword && !newpassword) {
             return res.status(404).json({success:false, message:"Please write new password"})
         }
-
-        if (req.file) {
-            existUser.profile=req.file.filename;
-        }
-
         await existUser.save();
 
         res.status(200).json({success:true, message:'Profile Update Successfully', user:existUser})

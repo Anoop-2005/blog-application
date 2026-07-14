@@ -9,7 +9,6 @@ export default function UpdatePost() {
 
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
-  const [image, setImage] = useState(null)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -33,7 +32,6 @@ export default function UpdatePost() {
       const formData = new FormData()
       formData.append('title', title)
       formData.append('desc', desc)
-      if (image) formData.append('postimage', image)
 
       const response = await patch(`/blog/update/${id}`, formData)
 
@@ -74,16 +72,6 @@ export default function UpdatePost() {
             onChange={(e) => setDesc(e.target.value)}
           />
         </div>
-
-        <div className="mb-3">
-          <label className="form-label text-black">Change Image</label>
-          <input
-            type="file"
-            className="form-control"
-            onChange={(e) => setImage(e.target.files[0])}
-          />
-        </div>
-
         <button type="submit" className="btn btn-primary" disabled={loading}>
           {loading ? 'Updating...' : 'Update Post'}
         </button>
