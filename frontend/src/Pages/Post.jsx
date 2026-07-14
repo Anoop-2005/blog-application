@@ -140,7 +140,6 @@ export default function Blog() {
       {singlePost && (
         <ChatbotWidget
       postId={postId}
-      currentBlogText={`Title:${singlePost.title}\n\nDescription: ${singlePost.desc}`}
       />
       )}
       

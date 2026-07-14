@@ -50,7 +50,7 @@ export default function RecentPost() {
                     className='card-img-top img-fluid' alt=""/>
                     <div className='card-body bg-dark text-white'>
                         <h5 className='card-title'>{post.title}</h5>
-                        <p className='card-text'>{post.desc}</p>
+                        <p className='card-text'>{truncateText(post.desc, 30)}</p>
                         <button className='btn btn-primary w-100 mt-3 ' onClick={()=>handlevaigte(post._id)}>Read Article</button>
                     </div>
                 </div>
